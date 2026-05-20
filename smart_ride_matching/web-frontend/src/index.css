@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-gray-900 bg-gray-50;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 transition-all duration-200;
+  }
+  .input-field:focus {
+    @apply outline-none ring-2 ring-[#F9A8D4] border-transparent;
+  }
+  
+  .btn-primary {
+    @apply w-full py-3 bg-[#F9A8D4] hover:bg-[#EC4899] text-white font-bold rounded-full transition-colors duration-200 shadow-md hover:shadow-lg transform active:scale-95;
+  }
+
+  .btn-social {
+    @apply w-full flex justify-center items-center gap-3 py-3 px-4 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors duration-200 font-medium text-gray-700 bg-white shadow-sm;
+  }
+}

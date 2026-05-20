@@ -1,0 +1,2 @@
+driver_id,name,phone,password,license_number,vehicle_number,vehicle_type,verification_status,safety_rating,status,x,y
+W54f6b3,ame,9900998905,1234,1234,1111,Scooter,pending,5.0,available,2,3

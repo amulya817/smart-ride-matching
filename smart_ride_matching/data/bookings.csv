@@ -1,0 +1,3 @@
+booking_id,driver_id,pickup,destination,fare,status
+B001,D8,"(12,4)","(6,4)",120,Confirmed
+B001,D8,"(12,4)","(6,4)",120,Confirmed

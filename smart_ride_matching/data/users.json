@@ -1,0 +1,22 @@
+{
+  "amulyab": {
+    "salt": "35a03d5bb7c18340386f3170e23ac4ea",
+    "password": "527241b208f2bdc50a0eb5b30d92bc8f8a77347ff2e0ce7b1b0d70476f79bb84"
+  },
+  "amulya": {
+    "salt": "5e171159291660d810412f48661b047c",
+    "password": "fe34b4acc465688e73a49ebda49e0d7b4e488bbcff4954e474de9cd253b5bdb0"
+  },
+  "menotyou@gmail.com": {
+    "salt": "5fedfdc8d1556f13120eb765870e0066",
+    "password": "546b18ed22b38bf4161f839bb648e013678301dcd5029077c37ef8d5b61fb228"
+  },
+  "amulya2704": {
+    "salt": "17ea3603356a93b716160221069e1983",
+    "password": "e331c8b089591353cf78bf241c02fe529282d3acfdbc8be100535a4d8d0a573d"
+  },
+  "abc12": {
+    "salt": "c825924768875e3b0b73a76aedf930e2",
+    "password": "e4823d241a5bbd2efac5e539f0d35853ed60ed2c67028804f09b6dc012c3f054"
+  }
+}

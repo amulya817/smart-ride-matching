@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHer Ride - Architecture Visuals</title>
+    <!-- Tailwind CSS for clean layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .mermaid-container {
+            position: relative;
+        }
+
+        .export-btns {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mermaid-container:hover .export-btns {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-10 border-b pb-4">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">SafeHer Ride Architecture Visuals</h1>
+            <p class="text-gray-600">Export these diagrams for your presentations, reports, and README files. Hover over
+                any diagram to reveal the download buttons.</p>
+        </header>
+
+        <!-- 1. Presentation Graphic -->
+        <section class="mb-16 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">1. Presentation Block Diagram</h2>
+            <p class="text-sm text-gray-500 mb-6">Optimized for PowerPoint and Keynote.</p>
+
+            <div class="mermaid-container border rounded-lg p-8 flex justify-center bg-gray-50 relative"
+                id="container-1">
+                <div class="export-btns flex gap-2">
+                    <button onclick="downloadPNG('diagram-1', 'safeher-presentation')"
+                        class="px-3 py-1 bg-purple-600 text-white text-sm rounded hover:bg-purple-700 shadow">⬇️
+                        PNG</button>
+                    <button onclick="downloadSVG('diagram-1', 'safeher-presentation')"
+                        class="px-3 py-1 bg-gray-800 text-white text-sm rounded hover:bg-gray-900 shadow">⬇️
+                        SVG</button>
+                </div>
+                <div class="mermaid" id="diagram-1">
+                    graph TD
+                    classDef frontend fill:#2a1b42,stroke:#c084fc,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+                    classDef aiEngine fill:#381a3d,stroke:#ec4899,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+                    classDef coreEngine fill:#132a22,stroke:#10b981,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+                    classDef database fill:#31220f,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:10px,ry:10px;
+
+                    subgraph Front["📱 Frontend Layer (Streamlit)"]
+                    direction LR
+                    A[Book Ride UI]:::frontend
+                    B[Live Route Map UI]:::frontend
+                    C[Emergency SOS UI]:::frontend
+                    D[Driver Dashboard UI]:::frontend
+                    end
+
+                    subgraph AI["🧠 AI Intelligence Layer"]
+                    direction LR
+                    AI_Match[AI Safety Matching\n(Confidence & Risk)]:::aiEngine
+                    AI_Route[AI Route Intel\n(Safety & ETA)]:::aiEngine
+                    AI_SOS[AI SOS Escalation\n(Threat Assessment)]:::aiEngine
+                    AI_Dash[Booking Intel\n(Demand Positioning)]:::aiEngine
+                    end
+
+                    subgraph Core["⚙️ Core Operational Engines"]
+                    direction LR
+                    M_Engine[Matching Engine\n(Shortest Path)]:::coreEngine
+                    F_Engine[Fare Engine\n(Dynamic Pricing)]:::coreEngine
+                    R_Control[Ride Controller\n(Lifecycle)]:::coreEngine
+                    S_Manager[SOS Manager\n(Alerts)]:::coreEngine
+                    end
+
+                    subgraph DB["💾 Data Storage Layer"]
+                    direction LR
+                    DB_Drivers[(Drivers Database)]:::database
+                    DB_Riders[(Riders Database)]:::database
+                    DB_Bookings[(Bookings History)]:::database
+                    end
+
+                    Front --> AI
+                    AI --> Core
+                    Core --> DB
+
+                    A -.->|1. Request| AI_Match
+                    B -.->|Fetch Data| AI_Route
+                    C -.->|Trigger Alert| AI_SOS
+                    D -.->|Analytics| AI_Dash
+
+                    AI_Match -.->|2. Candidates| M_Engine
+                    AI_Match -.->|3. Pricing| F_Engine
+                    AI_Route -.->|Simulate| M_Engine
+                    B -.->|State| R_Control
+                    AI_SOS -.->|Assess Threat| S_Manager
+
+                    M_Engine -.->|Fetch| DB_Drivers
+                    R_Control -.->|Update| DB_Bookings
+                    S_Manager -.->|Update| DB_Bookings
+                    AI_Dash -.->|Analyze| DB_Bookings
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Report Graphic -->
+        <section class="mb-16 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">2. Internship Report Diagram</h2>
+            <p class="text-sm text-gray-500 mb-6">Clean, high-contrast formal design.</p>
+
+            <div class="mermaid-container border rounded-lg p-8 flex justify-center bg-white relative" id="container-2">
+                <div class="export-btns flex gap-2">
+                    <button onclick="downloadPNG('diagram-2', 'safeher-report')"
+                        class="px-3 py-1 bg-purple-600 text-white text-sm rounded hover:bg-purple-700 shadow">⬇️
+                        PNG</button>
+                    <button onclick="downloadSVG('diagram-2', 'safeher-report')"
+                        class="px-3 py-1 bg-gray-800 text-white text-sm rounded hover:bg-gray-900 shadow">⬇️
+                        SVG</button>
+                </div>
+                <div class="mermaid" id="diagram-2">
+                    graph LR
+                    classDef presentation fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000000;
+                    classDef aiService fill:#f5f5f5,stroke:#333333,stroke-width:2px,color:#000000,stroke-dasharray: 5 5;
+                    classDef business fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000;
+                    classDef persistence fill:#e8e8e8,stroke:#333333,stroke-width:1px,color:#000000;
+
+                    subgraph "1. Presentation Layer"
+                    A[Book Ride View]:::presentation
+                    B[Route Map View]:::presentation
+                    C[Emergency SOS]:::presentation
+                    D[Dashboard View]:::presentation
+                    end
+
+                    subgraph "2. AI Services Layer"
+                    AI1[AI Safety Matching]:::aiService
+                    AI2[AI Route Intelligence]:::aiService
+                    AI3[AI Emergency Escalate]:::aiService
+                    AI4[Booking Intelligence]:::aiService
+                    end
+
+                    subgraph "3. Business Logic Engines"
+                    C1[Matching Engine]:::business
+                    C2[Fare Engine]:::business
+                    C3[Ride Controller]:::business
+                    C4[SOS Manager]:::business
+                    end
+
+                    subgraph "4. Persistence Layer"
+                    D1[(Drivers DB)]:::persistence
+                    D2[(Riders DB)]:::persistence
+                    D3[(Bookings DB)]:::persistence
+                    end
+
+                    A --> AI1
+                    AI1 --> C1 & C2
+                    B --> AI2 & C3
+                    C --> AI3
+                    D --> AI4
+
+                    AI2 --> C1
+                    AI3 --> C4
+
+                    C1 --> D1
+                    C3 --> D3
+                    C4 --> D3
+                    AI4 --> D3
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Workflows -->
+        <section class="mb-16 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">3. Specific Workflow Flowcharts</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Book Ride -->
+                <div class="mermaid-container border rounded-lg p-6 flex flex-col items-center bg-gray-50 relative"
+                    id="container-3">
+                    <h3 class="font-bold text-sm text-gray-500 w-full mb-4">Core Booking Workflow</h3>
+                    <div class="export-btns flex gap-2">
+                        <button onclick="downloadPNG('diagram-3', 'workflow-booking')"
+                            class="px-2 py-1 bg-purple-600 text-white text-xs rounded hover:bg-purple-700 shadow">PNG</button>
+                        <button onclick="downloadSVG('diagram-3', 'workflow-booking')"
+                            class="px-2 py-1 bg-gray-800 text-white text-xs rounded hover:bg-gray-900 shadow">SVG</button>
+                    </div>
+                    <div class="mermaid" id="diagram-3">
+                        flowchart TD
+                        classDef start fill:#1e1e2e,stroke:#c084fc,stroke-width:2px,color:#fff;
+                        classDef process fill:#2d1b4e,stroke:#ec4899,stroke-width:2px,color:#fff;
+                        classDef core fill:#0f0a1a,stroke:#10b981,stroke-width:2px,color:#fff;
+                        classDef data fill:#181825,stroke:#f59e0b,stroke-width:2px,color:#fff;
+
+                        User([Rider Requests Ride]):::start --> BookUI[Book Ride UI]:::start
+                        BookUI --> AI_Match{AI Safety Matching}:::process
+
+                        AI_Match -->|Calculate Risk| Fare[Fare Engine]:::core
+                        AI_Match -->|Find Safe Drivers| Match[Matching Engine]:::core
+
+                        Match --> DbDrivers[(Drivers DB)]:::data
+                        DbDrivers --> Return[Return Candidates]:::process
+                    </div>
+                </div>
+
+                <!-- SOS Flow -->
+                <div class="mermaid-container border rounded-lg p-6 flex flex-col items-center bg-gray-50 relative"
+                    id="container-4">
+                    <h3 class="font-bold text-sm text-gray-500 w-full mb-4">Emergency SOS Workflow</h3>
+                    <div class="export-btns flex gap-2">
+                        <button onclick="downloadPNG('diagram-4', 'workflow-sos')"
+                            class="px-2 py-1 bg-purple-600 text-white text-xs rounded hover:bg-purple-700 shadow">PNG</button>
+                        <button onclick="downloadSVG('diagram-4', 'workflow-sos')"
+                            class="px-2 py-1 bg-gray-800 text-white text-xs rounded hover:bg-gray-900 shadow">SVG</button>
+                    </div>
+                    <div class="mermaid" id="diagram-4">
+                        flowchart TD
+                        classDef alert fill:#3b0a0a,stroke:#ef4444,stroke-width:2px,color:#fff;
+                        classDef process fill:#2d1b4e,stroke:#ec4899,stroke-width:2px,color:#fff;
+                        classDef action fill:#0f0a1a,stroke:#10b981,stroke-width:2px,color:#fff;
+                        classDef data fill:#181825,stroke:#f59e0b,stroke-width:2px,color:#fff;
+
+                        Trigger([Trigger SOS Alert]):::alert --> SOS_UI[Emergency SOS UI]:::alert
+                        SOS_UI --> AI_Threat{AI Threat Assessment}:::process
+
+                        AI_Threat -->|High Threat Level| SOS_Mgr[SOS Manager]:::action
+                        SOS_Mgr -->|Broadcast to Contacts| External[External APIs]:::action
+                        SOS_Mgr -->|Persist Audit Log| DB[(Bookings DB)]:::data
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Export Logic -->
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+
+        function downloadSVG(svgId, filename) {
+            const svgNode = document.querySelector(`#${svgId} svg`);
+            if (!svgNode) return alert("SVG not ready yet.");
+
+            const serializer = new XMLSerializer();
+            let source = serializer.serializeToString(svgNode);
+
+            if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+                source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+            }
+            if (!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)) {
+                source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+            }
+
+            source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+            const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+
+            const downloadLink = document.createElement("a");
+            downloadLink.href = url;
+            downloadLink.download = filename + ".svg";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        function downloadPNG(svgId, filename) {
+            const svgNode = document.querySelector(`#${svgId} svg`);
+            if (!svgNode) return alert("SVG not ready yet.");
+
+            const serializer = new XMLSerializer();
+            const svgString = serializer.serializeToString(svgNode);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const DOMURL = self.URL || self.webkitURL || self;
+            const img = new Image();
+            const svg = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+            const url = DOMURL.createObjectURL(svg);
+
+            img.onload = function () {
+                canvas.width = img.width * 2; // High-res
+                canvas.height = img.height * 2;
+                ctx.scale(2, 2);
+
+                // Add white background instead of transparent
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.drawImage(img, 0, 0);
+                const png = canvas.toDataURL("image/png");
+
+                const downloadLink = document.createElement("a");
+                downloadLink.download = filename + ".png";
+                downloadLink.href = png;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                DOMURL.revokeObjectURL(url);
+            };
+            img.src = url;
+        }
+    </script>
+</body>
+
+</html>
