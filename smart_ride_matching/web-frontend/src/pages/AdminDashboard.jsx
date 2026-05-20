@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE from '../lib/api';
 import { Card } from '../components/ui/Card';
 import { Shield, Activity, Users, AlertCircle, RefreshCw, AlertTriangle } from 'lucide-react';
 
@@ -6,7 +7,7 @@ const AdminDashboard = () => {
   const [alerts, setAlerts] = useState([]);
 
   const fetchAlerts = () => {
-    fetch('http://localhost:5000/api/emergency/alerts')
+    fetch(`${API_BASE}/api/emergency/alerts`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE from '../lib/api';
 import { Card } from '../components/ui/Card';
 import { Shield, Car, UserCheck, AlertTriangle } from 'lucide-react';
 
@@ -6,7 +7,7 @@ const Dashboard = () => {
   const [recentRides, setRecentRides] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/rides')
+    fetch(`${API_BASE}/api/rides`)
       .then(res => res.json())
       .then(data => {
         if (data.success && data.rides) {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE from '../lib/api';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -10,17 +11,17 @@ const Payment = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/payment/methods')
+    fetch(`${API_BASE}/api/payment/methods`)
       .then(res => res.json())
       .then(data => data.success && setMethods(data.methods))
       .catch(console.error);
       
-    fetch('http://localhost:5000/api/wallet')
+    fetch(`${API_BASE}/api/wallet`)
       .then(res => res.json())
       .then(data => data.success && setBalance(data.wallet.balance))
       .catch(console.error);
 
-    fetch('http://localhost:5000/api/payment/transactions')
+    fetch(`${API_BASE}/api/payment/transactions`)
       .then(res => res.json())
       .then(data => data.success && setTransactions(data.transactions))
       .catch(console.error);
@@ -28,7 +29,7 @@ const Payment = () => {
 
   const handleAddMethod = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/payment/add-method', {
+      const res = await fetch(`${API_BASE}/api/payment/add-method`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'VISA', provider: 'HDFC Bank' })
@@ -42,7 +43,7 @@ const Payment = () => {
 
   const handleTopUp = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/wallet/topup', {
+      const res = await fetch(`${API_BASE}/api/wallet/topup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: 500 })
@@ -57,7 +58,7 @@ const Payment = () => {
   const handleDownloadInvoice = async (rideId) => {
     if (!rideId) return alert('No transaction selected');
     try {
-      const response = await fetch(`http://localhost:5000/api/payment/invoice/${rideId}`);
+      const response = await fetch(`${API_BASE}/api/payment/invoice/${rideId}`);
       if (!response.ok) throw new Error('Failed to download invoice');
       
       const blob = await response.blob();

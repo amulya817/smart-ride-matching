@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE from '../lib/api';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -67,7 +68,7 @@ const BookRide = () => {
 
   const handleBook = async () => {
     try {
-      await fetch('http://localhost:5000/api/book-ride', {
+      await fetch(`${API_BASE}/api/book-ride`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +96,7 @@ const BookRide = () => {
         const { latitude, longitude } = position.coords;
         
         try {
-          const res = await fetch('http://localhost:5000/api/emergency/alert', {
+          const res = await fetch(`${API_BASE}/api/emergency/alert`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
